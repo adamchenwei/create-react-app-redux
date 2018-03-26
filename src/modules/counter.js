@@ -1,6 +1,10 @@
 export const INCREMENT_REQUESTED = 'counter/INCREMENT_REQUESTED';
+export const INCREMENT_REQUESTED_ASYNC = 'counter/INCREMENT_REQUESTED_ASYNC';
+
 export const INCREMENT = 'counter/INCREMENT';
 export const DECREMENT_REQUESTED = 'counter/DECREMENT_REQUESTED';
+export const DECREMENT_REQUESTED_ASYNC = 'counter/DECREMENT_REQUESTED_ASYNC';
+
 export const DECREMENT = 'counter/DECREMENT';
 
 const initialState = {
@@ -12,6 +16,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT_REQUESTED:
+    case INCREMENT_REQUESTED_ASYNC:
       return {
         ...state,
         isIncrementing: true
@@ -25,6 +30,7 @@ export default (state = initialState, action) => {
       };
 
     case DECREMENT_REQUESTED:
+    case DECREMENT_REQUESTED_ASYNC:
       return {
         ...state,
         isDecrementing: true
@@ -57,7 +63,8 @@ export const increment = () => {
 export const incrementAsync = () => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTED
+      type: INCREMENT_REQUESTED_ASYNC
+      //type: INCREMENT_REQUESTED
     });
 
     return setTimeout(() => {
@@ -83,6 +90,7 @@ export const decrement = () => {
 export const decrementAsync = () => {
   return dispatch => {
     dispatch({
+      // type: DECREMENT_REQUESTED_ASYNC
       type: DECREMENT_REQUESTED
     });
 
